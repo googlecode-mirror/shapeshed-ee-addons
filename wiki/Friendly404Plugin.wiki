@@ -1,4 +1,4 @@
-#summary Plugin to suggest relevant pages on a 404 page
+#summary Suggests relevant weblog entries on a 404 page
 #labels plugin,1.6.x
 
 = Introduction =
