@@ -46,7 +46,7 @@
 	ExpressionEngine Version 1.6.x 
 	
 ==SEE ALSO==
-	http://google.com
+	http://expressionengine.com/forums/viewthread/92908/
 
 ==BUGS==
-	http://google.com
+	http://code.google.com/p/shapeshed-ee-addons/issues/list
