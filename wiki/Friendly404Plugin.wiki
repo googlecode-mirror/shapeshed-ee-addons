@@ -6,10 +6,8 @@
  This file must be placed in the
  /system/plugins/ folder in your ExpressionEngine installation.
 
- Plugin File for SS Friendly 404 Plugin
-
 ==NAME==
-	Shape Shed Friendly 404 
+	SS Friendly 404 
 
 ==SYNOPSIS==
 	Returns suggestions of weblog entries on a 404 page. 	
