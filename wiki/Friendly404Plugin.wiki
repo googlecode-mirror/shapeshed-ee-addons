@@ -36,9 +36,9 @@
 	===title=====		
 	outputs a title before the list of suggested articles
 	
-	{{{exp:ss_friendly_404 title="<h3>Perhaps you were looking for</h3>"}}}	
+	{{{{exp:ss_friendly_404 title="<h3>Perhaps you were looking for</h3>"}}}}	
 	
-	default: none
+	Default: none
 						
 ==EXAMPLES==
 	{{{{exp:ss_friendly_404 limit="10"} }}}
