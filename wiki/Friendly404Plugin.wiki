@@ -34,7 +34,7 @@
 	Default: show all weblogs
 	
 	===title=====		
-	outputs a title before the list of suggested articles
+	Outputs a title before the list of suggested articles
 	
 	{{{{exp:ss_friendly_404 title="<h3>Perhaps you were looking for</h3>"}}}}	
 	
