@@ -2,4 +2,5 @@
 SS Friendly 404 - Change Log
 ------------------------------------------------------------
 
-v 1.0.0 - Initial Release - 04-10-2008
+v 1.0.0 - 04-10-2008 - Initial Release
+v 1.0.1 - 07-10-2008 - Addition of title parameter
