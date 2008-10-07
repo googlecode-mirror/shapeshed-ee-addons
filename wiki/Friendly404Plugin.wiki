@@ -26,12 +26,19 @@
 	
 	Default: 5
 
-	===weblog=====	
+	===weblog===	
 	Limits entries to weblogs defined by their short name
 	
 	{{{{exp:ss_friendly_404 weblog="news"}}}}
 	
 	Default: show all weblogs
+	
+	===title=====		
+	outputs a title before the list of suggested articles
+	
+	{{{exp:ss_friendly_404 title="<h3>Perhaps you were looking for</h3>"}}}	
+	
+	default: none
 						
 ==EXAMPLES==
 	{{{{exp:ss_friendly_404 limit="10"} }}}
