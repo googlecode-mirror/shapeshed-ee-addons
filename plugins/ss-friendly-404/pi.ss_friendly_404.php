@@ -10,7 +10,6 @@
 #		Returns suggestions of weblog entries on a 404 page. 	
 #
 # DESCRIPTION:	
-#		
 #		The plugin matches entries to the last segment of the 404 URL. 
 #		Add the following tag to your 404 template
 #
@@ -25,6 +24,10 @@
 #		weblog		limits entries to weblogs defined by their short name
 #					e.g {exp:ss_friendly_404 weblog="news"}	
 #					default: show all weblogs
+#
+#		title		outputs a title before the list of suggested articles
+#					e.g {exp:ss_friendly_404 title="<h3>Perhaps you were looking for</h3>"}	
+#					default: none
 #
 # EXAMPLES
 #		{exp:ss_friendly_404 limit="10"}
@@ -69,16 +72,17 @@ class Ss_friendly_404{
 			$search_segment = end($IN->SEGS);
 			$limit = ( ! $TMPL->fetch_param('limit')) ? '5' : $TMPL->fetch_param('limit');
 			$weblog = ( ! $TMPL->fetch_param('weblog')) ? '' : $TMPL->fetch_param('weblog');
-
+			$title = ( ! $TMPL->fetch_param('title')) ? '' : $TMPL->fetch_param('title');
+			
 			/** ----------------------------------
 			/**  Build weblog query based on parameters
 			/** ----------------------------------*/
 
-			$weblog_str = '';
+			$weblog_str = "";
 			if ($weblog != "") 
 				{
 				$count = 1; 
-				$weblogs = explode('|', $weblog);
+				$weblogs = explode("|", $weblog);
 				foreach ($weblogs as $weblog_name) 
 					{
 					if ($count == 1) 
@@ -114,6 +118,10 @@ class Ss_friendly_404{
 
 			if ($query->num_rows > 0)
 				{
+					if ($title != "")
+						{
+							$this->return_data .= $title;
+						}
 					$this->return_data .= '<ul>';	
 				}
 
@@ -135,7 +143,7 @@ class Ss_friendly_404{
 	
 	function usage()
 	{
-	return "
+	return '
 	NAME
 	=======================
 			SS Friendly 404 
@@ -156,13 +164,18 @@ class Ss_friendly_404{
 
 			limit -		limits the number of entries returned
 
-						e.g {exp:ss_friendly_404 limit=\"10\"}
+						e.g {exp:ss_friendly_404 limit="10"}
 						default: 5
 
 			weblog -	limits entries to weblogs defined by their short name
 
- 						e.g {exp:ss_friendly_404 weblog=\"news\"}	
+ 						e.g {exp:ss_friendly_404 weblog="news"}	
 						default: show all weblogs
+						
+			title -		outputs a title before the list of articles
+
+ 						e.g {exp:ss_friendly_404 title="<h3>Perhaps you were looking for</h3>"}	
+						Outputs an HTML title and then the list of articles
 
 	EXAMPLES
 	=======================
@@ -182,7 +195,7 @@ class Ss_friendly_404{
 
 	BUGS
 	=======================
-			http://code.google.com/p/shapeshed-ee-addons/issues/list";
+			http://code.google.com/p/shapeshed-ee-addons/issues/list';
 
 	}
 	
