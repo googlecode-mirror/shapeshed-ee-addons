@@ -87,12 +87,12 @@ class Ss_friendly_404{
 					{
 					if ($count == 1) 
 						{
-							$weblog_str .= " AND ( w.blog_name = '$weblog_name'";
+							$weblog_str .= " AND ( w.blog_name = '".$DB->escape_str($weblog_name)."'";
 							$count++;
 						}
 					else 
 						{
-							$weblog_str .= " OR w.blog_name = '$weblog_name'";
+							$weblog_str .= " OR w.blog_name = '".$DB->escape_str($weblog_name)."'";
 						}
 					} 
 				$weblog_str .= " )";
@@ -108,32 +108,34 @@ class Ss_friendly_404{
 						$weblog_str
 						AND (t.expiration_date = 0 || t.expiration_date > UNIX_TIMESTAMP())
 						AND (t.title LIKE '%".$DB->escape_str($search_segment)."%')
-						AND t.status = 'open' AND t.status != 'closed'
+						AND t.status = 'Open' AND t.status != 'closed'
 						ORDER BY t.sticky desc, t.entry_date desc, t.entry_id desc
 						LIMIT 0, ".$DB->escape_str($limit)."");
 								
 	        /** ----------------------------------
-	        /**  Return any results in an unordered list
+	        /**  Loop through results and make the results available 
 	        /** ----------------------------------*/
+				
+			$total_results = sizeof($query->result);			
 
-			if ($query->num_rows > 0)
-				{
-					if ($title != "")
-						{
-							$this->return_data .= $title;
-						}
-					$this->return_data .= '<ul>';	
-				}
+			foreach($query->result as $count => $row)
+			{
+			    $tagdata = $TMPL->tagdata;
+			
+	            $row['count']			= $count+1;
+	            $row['total_results']	= $total_results;
 
-		    foreach($query->result as $row)
-		    	{
-		      		$this->return_data .="\n\t\t".'<li><a href="'.$row['search_results_url'].''.$row['url_title'].'">'.$row['title'].'</a></li>';
-		    	}
+			    foreach ($TMPL->var_single as $key => $val)
+			    {
+			        if (isset($row[$val]))
+			        {
+			            $tagdata = $TMPL->swap_var_single($val, $row[$val], $tagdata);
+			        }
+			    }
 
-			if ($query->num_rows > 0)
-				{
-					$this->return_data .= "\n\t".'</ul>';	
-				}
+			    $this->return_data .= $tagdata; 
+			}	
+			
 
 		}
 
