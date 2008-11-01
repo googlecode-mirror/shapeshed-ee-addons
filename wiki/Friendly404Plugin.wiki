@@ -10,44 +10,52 @@
 	SS Friendly 404 
 
 ==SYNOPSIS==
-	Returns suggestions of weblog entries on a 404 page. 	
+	Returns suggestions of weblog entries on a 404 page. 
 
 ==DESCRIPTION==
-	The plugin matches entries to the last segment of the 404 URL. Add the following tag to your 404 template.
+	The plugin matches entries to the last segment of the 404 URL helping users to find pages that match what they were looking for.
 
-	{{{{exp:ss_friendly_404}}}}
-	
-	The following options are available:
+	Add the following to your 404 template
 
-	===limit===	
-	Limits the number of entries returned
-	
-	{{{{exp:ss_friendly_404 limit="10"}}}}
-	
-	Default: 5
+	{{{exp:ss_friendly_404}
+		{if count == 1}<ul>{/if}
+			<li><a href="{auto_path}">{title}</a></li>
+		{if count == total_results}</ul>{/if}
+	{/exp:ss_friendly_404}}}
 
-	===weblog===	
-	Limits entries to weblogs defined by their short name
+	If no match is found nothing will be shown
+
+===PARAMETERS===
+	The following parameters are available:
+
+	limit - limits the number of entries returned
+
+	e.g {{{exp:ss_friendly_404 limit="10"}}}
+	default: 5
+
+	weblog - limits entries to weblogs defined by their short name
+
+	e.g {{{exp:ss_friendly_404 weblog="news|jobs"}}}	
+	default: show all weblogs
 	
-	{{{{exp:ss_friendly_404 weblog="news"}}}}
-	
-	Default: show all weblogs
-	
-	===title=====		
-	Outputs a title before the list of suggested articles
-	
-	{{{{exp:ss_friendly_404 title="<h3>Perhaps you were looking for</h3>"}}}}	
-	
-	Default: none
+===SINGLE VARIABLES===
+	{{{title}}}
+	{{{auto_path}}}
+	{{{url_title}}}
+	{{{count}}}
+	{{{total_results}}}
+	{{{weblog_id}}}
+	{{{search_results_url}}}
+
 						
 ==EXAMPLES==
 	{{{{exp:ss_friendly_404 limit="10"} }}}
 	
-	Limits results to 10
+	10 results will be returned
 	
 	{{{{exp:ss_friendly_404 weblog="news|services"}}}}
 
-	Returns only results from the news and services weblogs
+	Only results from the news and services weblogs will be returned
 
 ==COMPATIBILITY==
 	ExpressionEngine Version 1.6.x 
