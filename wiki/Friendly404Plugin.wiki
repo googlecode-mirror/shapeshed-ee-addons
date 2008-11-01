@@ -42,18 +42,24 @@
 	
 ===SINGLE VARIABLES===
 	{{{{title} }}}
+
 	{{{{auto_path} }}}
+
 	{{{{url_title} }}}
+
 	{{{{count} }}}
+
 	{{{{total_results} }}}
+
 	{{{{weblog_id} }}}
+
 	{{{{search_results_url} }}}
 
 						
 ==EXAMPLES==
 	{{{{exp:ss_friendly_404 limit="10"} }}}
 	
-	10 results will be returned
+	Only 10 results will be returned
 	
 	{{{{exp:ss_friendly_404 weblog="news|services"}}}}
 
