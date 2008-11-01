@@ -156,7 +156,7 @@ The plugin matches entries to the last segment of the 404 URL helping users to f
 Add the following to your 404 template
 
 {exp:ss_friendly_404}
-	{if count == 1}<ul>{/if}
+	{if count == 1}<h4>Perhaps you were looking for<ul>{/if}
 		<li><a href="{auto_path}">{title}</a></li>
 	{if count == total_results}</ul>{/if}
 {/exp:ss_friendly_404}
