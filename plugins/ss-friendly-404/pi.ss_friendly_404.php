@@ -94,7 +94,7 @@ class Ss_friendly_404{
 					$weblog_str
 					AND (t.expiration_date = 0 || t.expiration_date > UNIX_TIMESTAMP())
 					AND (t.title LIKE '%".$DB->escape_str($search_segment)."%')
-					AND t.status = 'Approved' AND t.status != 'closed'
+					AND t.status = 'Open' AND t.status != 'closed'
 					ORDER BY t.sticky desc, t.entry_date desc, t.entry_id desc
 					LIMIT 0, ".$DB->escape_str($limit)."");
 			
