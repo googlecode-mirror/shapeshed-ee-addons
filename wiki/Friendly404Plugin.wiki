@@ -17,11 +17,11 @@
 
 	Add the following to your 404 template
 
-	{{{exp:ss_friendly_404}
+	{{{{exp:ss_friendly_404}
 		{if count == 1}<ul>{/if}
 			<li><a href="{auto_path}">{title}</a></li>
 		{if count == total_results}</ul>{/if}
-	{/exp:ss_friendly_404}}}
+	{/exp:ss_friendly_404} }}}
 
 	If no match is found nothing will be shown
 
@@ -30,22 +30,22 @@
 
 	limit - limits the number of entries returned
 
-	e.g {{{exp:ss_friendly_404 limit="10"}}}
+	e.g {{{{exp:ss_friendly_404 limit="10"} }}}
 	default: 5
 
 	weblog - limits entries to weblogs defined by their short name
 
-	e.g {{{exp:ss_friendly_404 weblog="news|jobs"}}}	
+	e.g {{{{exp:ss_friendly_404 weblog="news|jobs"} }}}	
 	default: show all weblogs
 	
 ===SINGLE VARIABLES===
-	{{{title}}}
-	{{{auto_path}}}
-	{{{url_title}}}
-	{{{count}}}
-	{{{total_results}}}
-	{{{weblog_id}}}
-	{{{search_results_url}}}
+	{{{{title} }}}
+	{{{{auto_path} }}}
+	{{{{url_title} }}}
+	{{{{count} }}}
+	{{{{total_results} }}}
+	{{{{weblog_id} }}}
+	{{{{search_results_url} }}}
 
 						
 ==EXAMPLES==
